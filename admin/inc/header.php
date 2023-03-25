@@ -47,11 +47,11 @@
         <div class="grid_12 header-repeat">
             <div id="branding">
                 <div class="floatleft logo">
-                    <img src="img/livelogo.png" alt="Logo" />
+                    <img src="img/anisacat.jpg" alt="Logo" style="height:3rem;" />
 				</div>
 				<div class="floatleft middle">
-					<h1>Training with live project</h1>
-					<p>www.trainingwithliveproject.com</p>
+					<h1>CA NA DA CATE</h1>
+					<p>WWW.AK CATE HOUSE.COM</p>
 				</div>
                 <div class="floatright">
                     <div class="floatleft">
