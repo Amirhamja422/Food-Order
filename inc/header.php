@@ -1,3 +1,30 @@
+
+
+<?php
+ include 'libs/session.php';
+ Session::init();
+ include 'libs/database.php';
+ include 'helpers/format.php';
+
+ spl_autoload_register(function($class){
+  include_once "classes/".$class.".php";
+ });
+
+ $db = new Database();
+ $fm = new Format();
+ $pt = new Product();
+ $ct = new Cart();
+?>
+
+
+<?php
+  header("Cache-Control: no-cache, must-revalidate");
+  header("Pragma: no-cache"); 
+  header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); 
+  header("Cache-Control: max-age=2592000");
+?>
+
+
 <!DOCTYPE HTML>
 <head>
 <title>Store Website</title>
@@ -24,7 +51,7 @@
   <div class="wrap">
 		<div class="header_top">
 			<div class="logo">
-				<a href="index.php"><img src="images/anisacat.jpg" alt="Anisa khan cat" /></a>
+				<a href="index.php"><img src="images/anisacat.jpg" alt="" /></a>
 			</div>
 			  <div class="header_top_right">
 			    <div class="search_box">
@@ -49,7 +76,7 @@
 	<ul id="dc_mega-menu-orange" class="dc_mm-orange">
 	  <li><a href="index.php">Home</a></li>
 	  <li><a href="products.php">Products</a> </li>
-	  <li><a href="topbrands.htphpml">Top Brands</a></li>
+	  <li><a href="topbrands.php">Top Brands</a></li>
 	  <li><a href="cart.php">Cart</a></li>
 	  <li><a href="contact.php">Contact</a> </li>
 	  <div class="clear"></div>

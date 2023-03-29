@@ -1,8 +1,9 @@
 <?php
- include_once '../libs/database.php';
- include_once '../helpers/format.php';
-?>
+ $filepath = realpath(dirname(__FILE__));
+include_once($filepath.'/../libs/database.php');
+include_once($filepath.'/../helpers/format.php');
 
+?>
 
 <?php
 class Product{
@@ -52,9 +53,48 @@ class Product{
 
 
       public function getAllProduct(){
-        $query = "SELECT * FROM tbl_product ORDER BY productId DESC LIMIT 10";
+
+        $query = "SELECT p.* ,c.catName , b.brandName
+        FROM tbl_product as p, tbl_category as c, tbl_brand as b 
+        WHERE P.catId = c.catId AND P.brandId = b.brandId 
+        ORDER BY p.productId DESC";
+       
+
+        // $query = "SELECT tbl_product.* ,tbl_category.catName, tbl_brand.brandName
+        // FROM tbl_product
+        // INNER JOIN tbl_category 
+        // ON tbl_product.catId = tbl_category.catId
+        // INNER JOIN tbl_brand 
+        // ON tbl_product.brandId = tbl_brand.brandId
+        //  ORDER BY tbl_product.productId DESC";
         $result = $this->db->select($query);
         return $result;
         }
+
+
+     public function getFeatureProduct(){
+        $query = "SELECT * FROM tbl_product WHERE type= '0' ORDER BY productId DESC LIMIT 4";
+        $result = $this->db->select($query);
+        return $result;
+     }
+
+
+     public function getNewProduct(){
+        $query = "SELECT * FROM tbl_product ORDER BY productId DESC LIMIT 4";
+        $result = $this->db->select($query);
+        return $result;
+     }
+
+    public function singleProduct($id){
+        $query = "SELECT p.* ,c.catName , b.brandName
+        FROM tbl_product as p, tbl_category as c, tbl_brand as b 
+        WHERE P.catId = c.catId AND P.brandId = b.brandId AND P.productId = '$id'";
+        $result = $this->db->select($query);
+        return $result;
+    }
+
+
+
+
 }
 ?>

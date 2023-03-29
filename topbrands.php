@@ -40,18 +40,18 @@
 							</a>
 						</div>
 			      </div>
-		   <div class="login"><a href="login.html">Login</a></div>
+		   <div class="login"><a href="login.php">Login</a></div>
 		 <div class="clear"></div>
 	 </div>
 	 <div class="clear"></div>
  </div>
-<div class="menu">
+ <div class="menu">
 	<ul id="dc_mega-menu-orange" class="dc_mm-orange">
-	  <li><a href="index.html">Home</a></li>
-	  <li><a href="products.html">Products</a> </li>
-	  <li><a href="topbrands.html">Top Brands</a></li>
-	  <li><a href="cart.html">Cart</a></li>
-	  <li><a href="contact.html">Contact</a> </li>
+	  <li><a href="index.php">Home</a></li>
+	  <li><a href="products.php">Products</a> </li>
+	  <li><a href="topbrands.php">Top Brands</a></li>
+	   <li><a href="cart.php">Cart</a></li>
+	  <li><a href="contact.php">Contact</a> </li>
 	  <div class="clear"></div>
 	</ul>
 </div>

@@ -32,8 +32,8 @@ $fm = new Format();
 					while($result = $getPd->fetch_assoc()){?>		
 				<tr class="odd gradeX">
 					<td><?php echo $result['productName'];?></td>
-					<td><?php echo $result['catId'];?></td>
-					<td class="center"><?php echo $result['brandId'];?></td>
+					<td><?php echo $result['catName'];?></td>
+					<td class="center"><?php echo $result['brandName'];?></td>
 					<td class="center"><?php echo $fm->textShorten($result['body'],50);?></td>
 					<td class="center">$<?php echo $result['price'];?></td>
 					<td class="center"><img src="<?php echo $result['image'];?>"  style="height:40px; width:40px;"></td>

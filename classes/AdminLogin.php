@@ -1,12 +1,12 @@
 <?php
+//  echo $filepath = realpath(dirname(__FILE__));
  include '../libs/session.php';
+ include_once('../libs/database.php');
+ include_once('../helpers/format.php');
  Session::checkLogin();
 
- include_once '../libs/database.php';
- include_once '../helpers/format.php';
 
 ?>
-
 
 <?php
 /**
