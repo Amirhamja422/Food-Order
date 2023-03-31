@@ -2,7 +2,7 @@
 <?php include 'inc/header.php'; ?>
 <?php include 'inc/sidebar.php'; ?>
 
-
+<?php echo session_id(); ?>
  <div class="main">
     <div class="content">
     	<div class="content_top">
@@ -44,7 +44,7 @@
 					 <h2><?php echo $result['productName']; ?></h2>
 					 <p><?php echo $result['body'];?></p>
 					 <p><span class="price">$</span><?php echo $result['price'];?></p>
-				     <div class="button"><span><a href="details.php?id=<?php $result['productId'];?>" class="details">Details</a></span></div>
+				     <div class="button"><span><a href="details.php?id=<?php echo $result['productId']; ?>">Details</a></span></div>
 				</div>
               <?php }} ?>
 			</div>

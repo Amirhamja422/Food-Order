@@ -65,6 +65,9 @@
     <div class="content">
     	<div class="section group">
 		<?php 
+			include 'classes/Cart.php';
+			$ct = new Cart();
+
 			// $cat = new Category();
 			if(!isset($_GET['id']) || $_GET['id'] == ''){
 				echo "<script>window.location='404.php';</script>";
@@ -72,10 +75,16 @@
 			}else{
 				$id = $_GET['id'];
 			}
+        
+			if($_SERVER['REQUEST_METHOD'] =='POST'){
+				$quantity = $_POST['quantity'];
+			    $addCart = $ct->addToCart($quantity,$id);
+			}
+
+
 		?>
 
-
-	<div class="cont-desc span_1_of_2">	
+	 <div class="cont-desc span_1_of_2">	
 
 		<?php 
 		 include 'classes/Product.php';
@@ -86,26 +95,36 @@
 				
 
 			 <div class="grid images_3_of_2">
-						<img src="images/preview-img.jpg" alt="" />
-				</div>
+				<img src="admin/<?php echo $row['image']; ?>" alt="" />
+			 </div>
 	    	    <div class="desc span_3_of_2">
 					<h2>Lorem Ipsum is simply dummy text </h2>
 					<p><?php echo $row['body'];?></p>
-						<p>Price: <span>$</span><?php echo $row['price'] ?></p>
-						<p>Category: <span></span><?php echo $row['catName'] ?></p>
-						<p>Brand:<span></span><?php echo $row['brandName'] ?></p>
+						<p>Price: <span>$</span><?php echo $row['price']; ?></p>
+						<p>Category: <span></span><?php echo $row['catName']; ?></p>
+						<p>Brand:<span></span><?php echo $row['brandName']; ?></p>
 				</div>
-				    <div class="add-cart">
-					<form action="cart.html" method="post">
-						<input type="number" class="buyfield" name="" value="1"/>
+
+				<div class="add-cart">
+					<form action="" method="post">
+						<input type="number" class="buyfield" name="quantity" value="1"/>
 						<input type="submit" class="buysubmit" name="submit" value="Buy Now"/>
 					</form>				
-			   </div>
+			    </div>
+
+				<span style="color:red; font-size:13px;">
+				<?php
+
+				 if(isset($addCart))
+				 {
+                  echo $addCart;
+				}
+				?>
+              </span>
 			</div>
 			<div class="product-desc">
 				<h2>Product Details</h2>
-				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+				<p><?php echo $row['body'];?></p>
         </div>	
 	<?php } } ?>	
 	</div>
