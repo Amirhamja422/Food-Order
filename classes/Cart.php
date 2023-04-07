@@ -80,5 +80,22 @@ class Cart{
     }
 
 
+    public function delProductCatBy($id){
+        
+        $id  = mysqli_real_escape_string($this->db->link, $id);
+        $query = "DELETE FROM tbl_cart WHERE catId = '$id'";
+        $delData = $this->db->delete($query);
+    
+        if($delData){
+            $msg = "<span class='success'>Brand successfully deleted</span>";
+            return $msg; 
+        } else{
+            $msg = "<span class='error'>Brand not deleted</span>";
+            return $msg; 
+        }  
+
+
+    }
+
 }
 ?>

@@ -58,13 +58,27 @@
 	</ul>
 </div>
 
-<?php
+<?php 
 	include 'classes/Cart.php';
 	$ct = new Cart();
+ if(isset($_GET['delPro'])){
+	$id = $_GET['delPro'];
+	$delProduct = $ct->delProductCatBy($id);
+ }
+
+
+?>
+
+<?php
+
 	if($_SERVER['REQUEST_METHOD'] =='POST'){
 		$catId = $_POST['catId'];
 		$quantity = $_POST['quantity'];
 		$upCart = $ct->updateCartQuantity($quantity,$catId);
+		if($quantity <=0){
+			$delProduct = $ct->delProductCatBy($id);
+	
+		}
 	}
 ?>
 
@@ -75,6 +89,11 @@
 			<div class="cartpage">
 			    	<h2>Your Cart</h2>
 					<?php 
+
+					if(isset($delProduct)){
+					echo "Product Deleted Successfully";
+					}
+
 					 if(isset($upCart)){
 						echo "Product Updated Successfully";
 					 }
@@ -90,6 +109,7 @@
 								<th width="20%">Total Price</th>
 								<th width="10%">Action</th>
 								</tr>
+				
 								<?php 
 								 $getPro = $ct->getCartProduct();
 								 $i=0;
@@ -114,9 +134,10 @@
 									<?php
 									$total = $row['price'] * $row['quantity'];
 									echo $total;
+									Session::set("sum",$total);
 									?> 
 								</td>
-								<td><a href="">X</a></td>
+								<td><a onclick="return confirm('are you sure to delete!')" href="?delPro=<?php echo $row['catId'];?>">X</a></td>
 							</tr>
 							<?php 
                              $sum = $sum + $total;
